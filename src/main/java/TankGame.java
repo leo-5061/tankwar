@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 public class TankGame {
+    private static GameClient gameClient;
     public static void main(String[] args) {
-        GameClient gameClient=new GameClient();
+        gameClient=new GameClient();
         JFrame frame=new JFrame();
         frame.add(gameClient);
 
@@ -20,7 +22,7 @@ public class TankGame {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
-
+                gameClient.keyReleased(e);
             }
 
         });
@@ -28,5 +30,10 @@ public class TankGame {
         gameClient.repaint();
         frame.pack();
 
+
+    }
+
+    public static GameClient getGameClient() {
+        return gameClient;
     }
 }
